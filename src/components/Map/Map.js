@@ -50,7 +50,7 @@ function Map({ positions, userLocation }) {
   return (
     <MapContainer
       center={userLocation || defaultPosition}
-      zoom={6}
+      zoom={16}
       style={{ height: "100vh", width: "100vw" }}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
@@ -60,15 +60,13 @@ function Map({ positions, userLocation }) {
           key={index}
           position={[position.latitude, position.longitude]}
           icon={outros}
-          eventHandlers={{
-            click: () => {
-              if (userLocation && position.latitude !== userLocation[0] && position.longitude !== userLocation[1]) {
-                openWaze(position.latitude, position.longitude);
-              }
-            }
-          }}
+
         >
-          <Popup>{position.name}</Popup>
+          <Popup>{position.name}<br /><br /><div className='wazeIcon' onClick={() => {
+            if (userLocation && position.latitude !== userLocation[0] && position.longitude !== userLocation[1]) {
+              openWaze(position.latitude, position.longitude);
+            }
+          }}>Abrir com Waze</div></Popup>
         </Marker>
       ))}
 

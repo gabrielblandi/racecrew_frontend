@@ -4,3 +4,13 @@
     width:150px;
     height:40px;
 }
+
+.wazeIcon{
+    text-align:center;
+    background-color: #42D4FF;
+    color:black;
+    border-radius:5px;
+    padding:4px 8px !important;
+    padding-top:6px !important;
+    cursor:pointer;
+}

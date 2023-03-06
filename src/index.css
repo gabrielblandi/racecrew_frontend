@@ -10,3 +10,12 @@
   ::-ms-input-placeholder { /* Microsoft Edge */
     color: grey !important;
   }
+
+  body{
+    overflow: hidden !important;
+  }
+
+  .leaflet-popup-content{
+    text-align:center !important;
+    font-weight: bold !important;
+}
