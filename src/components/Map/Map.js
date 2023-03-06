@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import carIcon from "../../images/car-icon.png";
-import carIconPreto from '../../images/black-car-icon.png';
+import localizationIcon from '../../images/localizationIcon.png';
 
 function Map({ positions, userLocation }) {
   const [wazeOpened, setWazeOpened] = useState(false);
@@ -21,7 +21,7 @@ function Map({ positions, userLocation }) {
     });
   }, []);
 
-  const defaultPosition = [-27.6, -48.5];
+  const defaultPosition = [-22.6, -45.5];
 
   // Define o ícone do marcador
   const outros = L.icon({
@@ -33,7 +33,7 @@ function Map({ positions, userLocation }) {
   });
 
   const voce = L.icon({
-    iconUrl: carIconPreto,
+    iconUrl: localizationIcon,
     iconSize: [40, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -50,7 +50,7 @@ function Map({ positions, userLocation }) {
   return (
     <MapContainer
       center={userLocation || defaultPosition}
-      zoom={16}
+      zoom={6}
       style={{ height: "100vh", width: "100vw" }}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
