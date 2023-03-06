@@ -1,0 +1,112 @@
+:root {
+    --cor-principal: #FF6A00;
+}
+
+.background-video {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+}
+
+.logotipo img {
+    position: absolute;
+    text-align:center;
+    top:15px;
+    width: 250px !important;
+    height: 60px !important;
+}
+
+.areaLogin {
+    border:1px solid rgba(128, 128, 128, 0.205);
+    box-shadow:3px 3px 3px rgba(0, 0, 0, 0.219);
+    width: 400px;
+    height: 470px;
+    background-color: rgba(255, 255, 255,1);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 90px;
+    z-index: 9999999 !important;
+}
+
+.facebook-button {
+    position: relative !important;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #3b5998;
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 70;
+    text-transform: uppercase;
+}
+
+.login-button {
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: var(--cor-principal);
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 70;
+    text-transform: uppercase;
+}
+
+.register-button {
+    
+    margin-top:10px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background-color: rgb(83, 175, 83);
+    border-radius: 4px;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 70;
+    text-transform: uppercase;
+}
+
+
+#username {
+    border: 1px solid rgb(163, 163, 163) !important;
+    text-align: center;
+    font-weight: 70;
+}
+
+#password {
+    border: 1px solid rgb(163, 163, 163) !important;
+    text-align: center;
+    font-weight: 70;
+}
+
+.forgottenPassword {
+    font-weight: 70;
+    color: grey;
+}
+
+.fade-in { animation: fadeIn 3s forwards; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
