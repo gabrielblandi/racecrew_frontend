@@ -7,13 +7,28 @@ export default function MainPage() {
     const [userLocation, setUserLocation] = useState(null);
 
     useEffect(() => {
-        navigator.geolocation.watchPosition(
+        // Tenta obter a localização do usuário através do navegador
+        navigator.geolocation.getCurrentPosition(
             position => {
                 const { latitude, longitude } = position.coords;
                 setUserLocation([latitude, longitude]);
             },
             error => {
                 console.log(error);
+                // Se não for possível obter a localização do usuário através do navegador,
+                // tenta obter a localização através do IP
+                fetch('https://ipapi.co/json/')
+                    .then(response => response.json())
+                    .then(data => {
+                        const { latitude, longitude } = data;
+                        setUserLocation([latitude, longitude]);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        // Se não for possível obter a localização do usuário através do navegador
+                        // e nem através do IP, define a posição padrão
+                        setUserLocation([-22.6, -45.5]);
+                    });
             },
             { enableHighAccuracy: true }
         );
