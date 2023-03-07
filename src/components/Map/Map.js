@@ -21,7 +21,7 @@ function Map({ positions, userLocation }) {
     });
   }, []);
 
-  const defaultPosition = [-22.6, -45.5];
+  const defaultPosition = [-23.6, -46.5];
 
   // Define o ícone do marcador
   const outros = L.icon({
@@ -46,12 +46,18 @@ function Map({ positions, userLocation }) {
     setWazeOpened(true);
   };
 
+  const handleMapReady = (map) => {
+    if (userLocation) {
+      map.setView(userLocation, 16);
+    }
+  };
 
   return (
     <MapContainer
-      center={userLocation || defaultPosition}
+      center={defaultPosition}
       zoom={16}
       style={{ height: "100vh", width: "100vw" }}
+      whenReady={handleMapReady}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
@@ -60,19 +66,27 @@ function Map({ positions, userLocation }) {
           key={index}
           position={[position.latitude, position.longitude]}
           icon={outros}
-
         >
-          <Popup>{position.name}<br /><br /><div className='wazeIcon' onClick={() => {
-            if (userLocation && position.latitude !== userLocation[0] && position.longitude !== userLocation[1]) {
-              openWaze(position.latitude, position.longitude);
-            }
-          }}>Abrir com Waze</div></Popup>
+          <Popup>{position.name}
+
+            <br />
+            <br />
+            <div className='wazeButton' onClick={() => {
+              if (userLocation && position.latitude !== userLocation[0] && position.longitude !== userLocation[1]) {
+                openWaze(position.latitude, position.longitude);
+              }
+            }}>Abrir com Waze</div>
+            <br />
+            <a href={"tel:" + position.tel} className='telephoneButton'>Ligar para telefone</a>
+            <br/><br/>
+            
+          </Popup>
         </Marker>
       ))}
 
       {userLocation && (
         <Marker position={userLocation} icon={voce}>
-          <Popup>Você</Popup>
+          <Popup>Sua Localização</Popup>
         </Marker>
       )}
     </MapContainer>

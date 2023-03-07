@@ -16,7 +16,6 @@ export default class HomePage extends React.Component {
 
   }
 
-
   entrar = () => {
 
     const redirectTo = base64_encode('MainPage');
