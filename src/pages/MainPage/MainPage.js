@@ -59,7 +59,7 @@ export default function MainPage() {
         <div>
             <nav className='white black-text'>
                 <div class="nav-wrapper">
-                    <a href="#" class="brand-logo left"><div className='logotipoNavbar fade-in'><img src={Logo_black} ></img></div></a>
+                    <a href="#" class="brand-logo center"><div className='logotipoNavbar fade-in'><img src={Logo_black} ></img></div></a>
                     <ul id="nav-mobile" class="right show-on-medium-and-up show-on-medium-and-down">
                     <li><div className='exitButton'><MaterialIcon icon="exit_to_app" color='black' /></div></li>
                     </ul>
