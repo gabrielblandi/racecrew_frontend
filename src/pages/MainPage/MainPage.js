@@ -8,10 +8,23 @@ import MaterialIcon from 'material-icons-react';
 export default function MainPage() {
     const [userLocation, setUserLocation] = useState(null);
     const [showPopupInvite, setShowPopupInvite] = useState(false);
+    const [showManageGroup, setshowManageGroup] = useState(false);
 
     const handleSendInviteClick = () => {
         setShowPopupInvite(true);
     };
+
+
+    const handleshowManageGroup = () => {
+
+        if(showManageGroup){
+            setshowManageGroup(false);
+        }else{
+            setshowManageGroup(true);
+        }
+        
+    };
+
 
     useEffect(() => {
         navigator.geolocation.getCurrentPosition(
@@ -47,22 +60,23 @@ export default function MainPage() {
             <nav className='white black-text'>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo left"><div className='logotipoNavbar fade-in'><img src={Logo_black} ></img></div></a>
-                    <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <MaterialIcon icon="place" color='black'/>
+                    <ul id="nav-mobile" class="right show-on-medium-and-up show-on-medium-and-down">
+                    <li><div className='exitButton'><MaterialIcon icon="exit_to_app" color='black' /></div></li>
                     </ul>
                 </div>
             </nav>
 
-            <ul>
-            <li><div className='GroupmemberAction'>Apagar Grupo </div></li>
+            {showManageGroup && <ul id='membersGroup'>
+                <li><div className='GroupmemberAction'>Apagar Grupo </div></li>
                 {
                     positions && positions?.map((position) => {
-                        return <li><div className='GroupmemberName'><MaterialIcon icon="place" color='black'/><MaterialIcon icon="delete_forever" color='red' />{position.name}</div></li>
+                        return <li><div className='GroupmemberName'><MaterialIcon icon="place" color='black' /><MaterialIcon icon="delete_forever" color='red' />{position.name}</div></li>
                     })
                 }
             </ul>
+            }
             <Map positions={positions} userLocation={userLocation} />
-            <div className='fade-in FloatRoundButton manageGroupButton waves waves-effect waves-light'><MaterialIcon icon="group" color='white' /></div>
+            <div className='fade-in FloatRoundButton manageGroupButton waves waves-effect waves-light' onClick={handleshowManageGroup} ><MaterialIcon icon="group" color='white' /></div>
             <div className='fade-in FloatRoundButton manageChatButton waves waves-effect waves-light'><MaterialIcon icon="chat_bubble" color='white' /></div>
             <div className='fade-in FloatRoundButton removeLocalizationButton waves waves-effect waves-light'><MaterialIcon icon="gps_off" color='white' /></div>
             <div className='fade-in FloatRoundButton sendInviteButton waves waves-effect waves-light' onClick={handleSendInviteClick}>
