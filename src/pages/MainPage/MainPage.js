@@ -17,12 +17,12 @@ export default function MainPage() {
 
     const handleshowManageGroup = () => {
 
-        if(showManageGroup){
+        if (showManageGroup) {
             setshowManageGroup(false);
-        }else{
+        } else {
             setshowManageGroup(true);
         }
-        
+
     };
 
 
@@ -55,13 +55,22 @@ export default function MainPage() {
         { name: 'Membro 3', latitude: -20.551148, longitude: -43.634129, tel: '11988222262' }
     ];
 
+    const FeaturedMarkers = [
+        { name: 'Posto do seu zé', latitude:-22.551148, longitude: -45.634129, link: 'https://www.google.com.br', tel: '11988222262' }
+    ];
+
+    const customMarkers = [
+        { name: 'Encontro de Terça feira', latitude: -21.551148, longitude: -44.634129 }
+    ];
+
+
     return (
         <div>
             <nav className='white black-text'>
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo center"><div className='logotipoNavbar fade-in'><img src={Logo_black} ></img></div></a>
                     <ul id="nav-mobile" class="right show-on-medium-and-up show-on-medium-and-down">
-                    <li><div className='exitButton'><MaterialIcon icon="exit_to_app" color='black' /></div></li>
+                        <li><div className='exitButton'><MaterialIcon icon="exit_to_app" color='black' /></div></li>
                     </ul>
                 </div>
             </nav>
@@ -75,12 +84,15 @@ export default function MainPage() {
                 }
             </ul>
             }
-            <Map positions={positions} userLocation={userLocation} />
-            <div className='fade-in FloatRoundButton manageGroupButton waves waves-effect waves-light' onClick={handleshowManageGroup} ><MaterialIcon icon="group" color='white' /></div>
-            <div className='fade-in FloatRoundButton manageChatButton waves waves-effect waves-light'><MaterialIcon icon="chat_bubble" color='white' /></div>
-            <div className='fade-in FloatRoundButton removeLocalizationButton waves waves-effect waves-light'><MaterialIcon icon="gps_off" color='white' /></div>
-            <div className='fade-in FloatRoundButton sendInviteButton waves waves-effect waves-light' onClick={handleSendInviteClick}>
+            <Map positions={positions} userLocation={userLocation} FeaturedMarkers={FeaturedMarkers} customMarkers={customMarkers}/>
+            
+            <div className='fade-in FloatRoundButton manageGroupButton waves waves-effect waves-dark' onClick={handleshowManageGroup} ><MaterialIcon icon="group_work" color='white' /></div>
+            <div className='fade-in FloatRoundButton manageChatButton waves waves-effect waves-dark'><MaterialIcon icon="chat_bubble" color='white' /></div>
+            <div className='fade-in FloatRoundButton removeLocalizationButton waves waves-effect waves-dark'><MaterialIcon icon="gps_off" color='white' /></div>
+            <div className='fade-in FloatRoundButton sendInviteButton waves waves-effect waves-dark' onClick={handleSendInviteClick}>
                 <MaterialIcon icon="insert_link" color='white' />
+                <div className='fade-in FloatRoundButton addLocationButton waves waves-effect waves-dark'><MaterialIcon icon="add_location" color='white' /></div>
+
             </div>
             {showPopupInvite && (
                 <div className="popup fade-in">

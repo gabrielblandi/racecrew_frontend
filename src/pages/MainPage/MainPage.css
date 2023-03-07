@@ -15,6 +15,17 @@
     cursor:pointer;
 }
 
+.websiteButton{
+    text-align:center;
+    background-color: rgb(114, 55, 209);
+    color:white !important;
+    border-radius:5px;
+    padding:4px 8px !important;
+    padding-top:6px !important;
+    cursor:pointer;
+    text-shadow:1px 1px 1px rgb(0, 0, 0);
+}
+
 .telephoneButton{
     text-align:center;
     background-color: rgb(98, 189, 98);
@@ -53,6 +64,12 @@
     font-size:30px !important;
     position:relative;
     top:18px;
+}
+
+.addLocationButton{
+    position: fixed !important;
+    bottom:290px;
+    right:10px;
 }
 
 .manageGroupButton{

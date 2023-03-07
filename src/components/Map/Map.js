@@ -5,8 +5,10 @@ import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import carIcon from "../../images/car-icon.png";
 import localizationIcon from '../../images/localizationIcon.png';
+import featuredMarker from '../../images/featuredmark.png';
+import customMarker from '../../images/custommark.png';
 
-function Map({ positions, userLocation }) {
+function Map({ positions, userLocation, FeaturedMarkers, customMarkers }) {
   const [wazeOpened, setWazeOpened] = useState(false);
 
   useEffect(() => {
@@ -24,9 +26,24 @@ function Map({ positions, userLocation }) {
 
   const defaultPosition = [-23.6, -46.5];
 
-  // Define o ícone do marcador
   const outros = L.icon({
     iconUrl: carIcon,
+    iconSize: [40, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+
+  const featuredMarks = L.icon({
+    iconUrl: featuredMarker,
+    iconSize: [40, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    shadowSize: [41, 41],
+  });
+
+  const customMarks = L.icon({
+    iconUrl: customMarker,
     iconSize: [40, 41],
     iconAnchor: [12, 41],
     popupAnchor: [1, -34],
@@ -63,8 +80,52 @@ function Map({ positions, userLocation }) {
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
+      {customMarkers.map((customMark, index) => (
+        <Marker
+          key={index}
+          position={[customMark.latitude, customMark.longitude]}
+          icon={customMarks}
+        >
+          <Popup>{customMark.name}
+
+            <br />
+            <br />
+            <div className='wazeButton' onClick={() => {
+              if (userLocation && customMark.latitude !== userLocation[0] && customMark.longitude !== userLocation[1]) {
+                openWaze(customMark.latitude, customMark.longitude);
+              }
+            }}>Abrir com Waze</div>
+            <br />
+
+          </Popup>
+        </Marker>
+      ))}
       
-      
+      {FeaturedMarkers.map((featuredMark, index) => (
+        <Marker
+          key={index}
+          position={[featuredMark.latitude, featuredMark.longitude]}
+          icon={featuredMarks}
+        >
+          <Popup>{featuredMark.name}
+
+            <br />
+            <br />
+            <div className='wazeButton' onClick={() => {
+              if (userLocation && featuredMark.latitude !== userLocation[0] && featuredMark.longitude !== userLocation[1]) {
+                openWaze(featuredMark.latitude, featuredMark.longitude);
+              }
+            }}>Abrir com Waze</div>
+            <br />
+            <a href={"tel:" + featuredMark.tel} className='telephoneButton'>Ligar para telefone</a>
+            <br /><br />
+            <a href={featuredMark.link} target="_blank" className='websiteButton' color='white'>&nbsp; Acessar Website &nbsp;</a>
+            <br /><br />
+
+          </Popup>
+        </Marker>
+      ))}
+
       {positions.map((position, index) => (
         <Marker
           key={index}
@@ -82,8 +143,8 @@ function Map({ positions, userLocation }) {
             }}>Abrir com Waze</div>
             <br />
             <a href={"tel:" + position.tel} className='telephoneButton'>Ligar para telefone</a>
-            <br/><br/>
-            
+            <br /><br />
+
           </Popup>
         </Marker>
       ))}
@@ -94,7 +155,7 @@ function Map({ positions, userLocation }) {
         </Marker>
       )}
 
-      {userLocation && (<ChangeView newLocation={userLocation} zoom={11}/>)}
+      {userLocation && (<ChangeView newLocation={userLocation} zoom={12} />)}
     </MapContainer>
   );
 }
