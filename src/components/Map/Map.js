@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useMap } from 'react-leaflet/hooks'
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import carIcon from "../../images/car-icon.png";
@@ -46,21 +47,24 @@ function Map({ positions, userLocation }) {
     setWazeOpened(true);
   };
 
-  const handleMapReady = (map) => {
+  function ChangeView(props) {
+    const map = useMap()
     if (userLocation) {
-      map.setView(userLocation, 16);
+      map.setView(props.newLocation, Number(props.zoom));
     }
-  };
+    return null
+  }
 
   return (
     <MapContainer
       center={defaultPosition}
       zoom={16}
       style={{ height: "100vh", width: "100vw" }}
-      whenReady={handleMapReady}
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
+      
+      
       {positions.map((position, index) => (
         <Marker
           key={index}
@@ -89,6 +93,8 @@ function Map({ positions, userLocation }) {
           <Popup>Sua Localização</Popup>
         </Marker>
       )}
+
+      {userLocation && (<ChangeView newLocation={userLocation} zoom={16}/>)}
     </MapContainer>
   );
 }
