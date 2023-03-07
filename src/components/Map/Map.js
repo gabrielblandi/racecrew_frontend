@@ -94,7 +94,7 @@ function Map({ positions, userLocation }) {
         </Marker>
       )}
 
-      {userLocation && (<ChangeView newLocation={userLocation} zoom={16}/>)}
+      {userLocation && (<ChangeView newLocation={userLocation} zoom={11}/>)}
     </MapContainer>
   );
 }

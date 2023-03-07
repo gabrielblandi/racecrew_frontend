@@ -1,6 +1,7 @@
 .logotipoNavbar img {
     position:relative;
-    top:5px;
+    top:8px;
+    left:10px;
     width:150px;
     height:40px;
 }
@@ -37,38 +38,34 @@
     text-shadow:1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
-.manageGroupButton{
-    position: fixed !important;
-    background-color : black;
-    color: white !important;
-    bottom:10px;
-    right:10px;
-    z-index: 99999 !important;
+
+.FloatRoundButton {
+    background-color : white;
+    z-index: 9999 !important;
     width:60px;
     height:60px;
     text-align: center;
-    border-radius:100%;
     cursor:pointer;
+    box-shadow:1px 2px 3px rgba(0, 0, 0, 0.2) !important;
 }
 
-.manageGroupButton i {
+.FloatRoundButton i {
+    color: black !important;
     font-size:30px !important;
     position:relative;
     top:18px;
 }
 
+.manageGroupButton{
+    position: fixed !important;
+    bottom:10px;
+    right:10px;
+}
+
 .manageChatButton{
     position: fixed !important;
-    background-color : black;
-    color: white !important;
-    bottom:10px;
-    right:220px;
-    z-index: 99999 !important;
-    width:60px;
-    height:60px;
-    text-align: center;
-    border-radius:100%;
-    cursor:pointer;
+    bottom:220px;
+    right:10px;
 }
 
 .manageChatButton::after{
@@ -87,76 +84,19 @@
 }
 
 
-.manageChatButton i {
-    font-size:30px !important;
-    position:relative;
-    top:18px;
-}
-
-
 .removeLocalizationButton{
     position: fixed !important;
-    background-color : black;
-    color: white !important;
-    bottom:10px;
-    right:80px;
-    z-index: 99999 !important;
-    width:60px;
-    height:60px;
-    text-align: center;
-    border-radius:100%;
-    cursor:pointer;
+    bottom:80px;
+    right:10px;
 }
 
-.removeLocalizationButton i {
-    font-size:30px !important;
-    position:relative;
-    top:18px;
-}
 
 .sendInviteButton{
     position: fixed !important;
-    background-color : black;
-    color: white !important;
-    bottom:10px;
-    right:150px;
-    z-index: 99999 !important;
-    width:60px;
-    height:60px;
-    text-align: center;
-    border-radius:100%;
-    cursor:pointer;
+    bottom:150px;
+    right:10px;
 }
 
-.sendInviteButton i {
-    font-size:30px !important;
-    position:relative;
-    top:18px;
-}
-
-
-.modal {
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
 label {
     margin-bottom: 10px;
@@ -203,19 +143,20 @@ button:hover {
     color: black;
 }
 
-ul{
+ul {
     position:fixed;
-    z-index:999999 !important;
-     bottom:0px;
-     left:10px;
+    z-index:9999 !important;
+     bottom:-5px;
+     right:85px;
 }
 
-.memberName{
-    background-color: black;
-    color: white !important;
+.GroupmemberName{
+    text-align:center !important;
+    box-shadow:1px 2px 3px rgba(0, 0, 0, 0.2) !important;
+    background-color: white !important;
+    color: black !important;
     margin-top:5px;
-    padding:5px 20px;
-    border-radius:5px;
+    padding:5px 40px;
     cursor: pointer;
 }
 
@@ -225,7 +166,7 @@ ul{
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -234,10 +175,10 @@ ul{
 
 .popup-content {
     border-radius:15px !important;
-    background-color: black !important;
+    background-color: white !important;
     width:400px;
     height:250px;
-    color: white !important;
+    color: black !important;
     padding: 20px;
     display: flex;
     flex-direction: column;
@@ -261,7 +202,6 @@ ul{
 }
 
 .popup-content button {
-    border:1px solid black !important;
     background-color: white;
     color: black;
     border: none;
@@ -271,21 +211,27 @@ ul{
     cursor: pointer;
 }
 
-.popup-content button:hover {
-    border:1px solid white !important;
-    background-color: black;
-    color: white !important;
-}
-
-.popup-content button:hover i {
-    color: white !important;
-}
-
 .closemodalButton{
     background-color: rgba(255,255,255,0) !important;
-    color:white !important;
+    color:black !important;
     position:relative;
     bottom:216px;
     right:-170px;
     font-weight: bold;
+}
+
+.GroupmemberName i {
+    position:relative !important;
+    top:5px !important;
+    left:-15px;
+}
+
+.GroupmemberAction{
+    text-align:center !important;
+    box-shadow:1px 2px 3px rgba(0, 0, 0, 0.5);
+    background-color: black !important;
+    color: white !important;
+    margin-top:5px;
+    padding:5px 20px;
+    cursor: pointer;
 }

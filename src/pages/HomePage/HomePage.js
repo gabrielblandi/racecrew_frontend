@@ -1,7 +1,6 @@
 // import MaterialIcon from 'material-icons-react';
 import React from 'react';
 import Logo_black from '../../images/racecrew_logo_black.png';
-import Logo_white from '../../images/racecrew_logo_white.png';
 import Background_video from '../../images/background4.mp4';
 import './HomePage.css';
 import { encode as base64_encode, decode as base64_decode } from 'base-64';
