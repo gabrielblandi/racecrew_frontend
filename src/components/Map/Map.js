@@ -133,7 +133,9 @@ function Map({ positions, userLocation, FeaturedMarkers, customMarkers }) {
           icon={outros}
         >
           <Popup>{position.name}
-
+          <br />
+          <br />
+          <img className="profileImagePopup" src={require('../../images/' + position.userimage)}></img>
             <br />
             <br />
             <div className='wazeButton' onClick={() => {

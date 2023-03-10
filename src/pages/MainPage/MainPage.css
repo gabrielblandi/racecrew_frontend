@@ -1,5 +1,6 @@
 .logotipoNavbar img {
     position:relative;
+    left:15px;
     top:10px;
     width:150px;
     height:40px;
@@ -9,7 +10,6 @@
     text-align:center;
     background-color: black;
     color:white;
-    border-radius:5px;
     padding:4px 8px !important;
     padding-top:6px !important;
     cursor:pointer;
@@ -19,7 +19,6 @@
     text-align:center;
     background-color: rgb(114, 55, 209);
     color:white !important;
-    border-radius:5px;
     padding:4px 8px !important;
     padding-top:6px !important;
     cursor:pointer;
@@ -30,22 +29,10 @@
     text-align:center;
     background-color: rgb(98, 189, 98);
     color:white !important;
-    border-radius:5px;
     padding:4px 8px !important;
     padding-top:6px !important;
     cursor:pointer;
     text-shadow:1px 1px 1px rgb(0, 0, 0);
-}
-
-.chatButton{
-    text-align:center;
-    background-color: var(--cor-principal);
-    color:white !important;
-    border-radius:5px;
-    padding:4px 8px !important;
-    padding-top:6px !important;
-    cursor:pointer;
-    text-shadow:1px 1px 1px rgba(0, 0, 0, 0.7);
 }
 
 
@@ -193,7 +180,7 @@ button:hover {
     border-radius:15px !important;
     background-color: white !important;
     width:400px;
-    height:250px;
+    min-height:350px;
     color: black !important;
     padding: 20px;
     display: flex;
@@ -231,9 +218,12 @@ button:hover {
     background-color: rgba(255,255,255,0) !important;
     color:black !important;
     position:relative;
-    bottom:216px;
-    right:-170px;
+    float:right !important;
+    text-align:right;
+    align-items: right;
     font-weight: bold;
+    left:160px;
+    bottom:10px;
 }
 
 .GroupmemberName i {
@@ -252,13 +242,26 @@ button:hover {
     cursor: pointer;
 }
 
-.exitButton{
+.menuButtons{
+    cursor:pointer;
+    margin-left:15px;
     position:relative;
     right:20px;
     top:6px;
     
 }
 
-li .exitButton i {
+li .menuButtons i {
     font-size:30px !important;
+}
+
+.popup-content i {
+    font-size:40px !important;
+}
+
+.profileImagePopup{
+    width:100px;
+    height:100px;
+    border-radius:100%;
+    border : 2px solid black;
 }
