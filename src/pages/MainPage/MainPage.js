@@ -10,6 +10,8 @@ export default function MainPage() {
     const [showPopupAddLocation, setShowPopupAddLocation] = useState(false);
     const [showPopupInvite, setShowPopupInvite] = useState(false);
     const [showManageGroup, setshowManageGroup] = useState(false);
+    const [showPopupChat, setshowPopupChat] = useState(false);
+    const [positionInvisible, setInvisible] = useState(false);
 
     const handleShowPopupAddLocation = () => {
         setShowPopupAddLocation(true);
@@ -18,6 +20,15 @@ export default function MainPage() {
     const handleSendInviteClick = () => {
         setShowPopupInvite(true);
     };
+
+    const handlechatClick = () => {
+        setshowPopupChat(true);
+    };
+
+    const handleInvisiblePositionClick = () => {
+        setInvisible(prevPositionInvisible => !prevPositionInvisible);
+    };
+
     const handleshowManageGroup = () => {
 
         if (showManageGroup) {
@@ -91,8 +102,10 @@ export default function MainPage() {
             <Map positions={positions} userLocation={userLocation} FeaturedMarkers={FeaturedMarkers} customMarkers={customMarkers} />
 
             <div className='fade-in FloatRoundButton manageGroupButton waves waves-effect waves-dark' onClick={handleshowManageGroup} ><MaterialIcon icon="group_work" color='white' /></div>
-            <div className='fade-in FloatRoundButton manageChatButton waves waves-effect waves-dark'><MaterialIcon icon="chat_bubble" color='white' /></div>
-            <div className='fade-in FloatRoundButton removeLocalizationButton waves waves-effect waves-dark'><MaterialIcon icon="gps_off" color='white' /></div>
+            <div className='fade-in FloatRoundButton manageChatButton waves waves-effect waves-dark' onClick={handlechatClick}><MaterialIcon icon="chat_bubble" color='white' /></div>
+            <div className='fade-in FloatRoundButton removeLocalizationButton waves waves-effect waves-dark' onClick={handleInvisiblePositionClick}>
+                {positionInvisible ? <MaterialIcon icon="gps_fixed" color='white' /> : <MaterialIcon icon="gps_off" color='white' />}
+            </div>
             <div className='fade-in FloatRoundButton sendInviteButton waves waves-effect waves-dark' onClick={handleSendInviteClick}>
                 <MaterialIcon icon="insert_link" color='white' />
             </div>
@@ -117,13 +130,22 @@ export default function MainPage() {
                     <div className="popup-content">
                         <button className='closemodalButton' onClick={() => setShowPopupAddLocation(false)}><MaterialIcon icon="close" /></button>
                         <h5>Nova Marcação</h5>
-                        <div>Insira o nome da rua que deseja salvar.</div>
+                        <br />
+                        <div className='center-align'>Insira o nome da rua que deseja salvar e dê um rotulo para o novo marcador.</div>
                         <input type="text" placeholder='Ex. Rua xxxxxxxx xx xxxxxxx' />
-                        <div>Insira um nome para a marcação</div>
                         <input type="text" placeholder='Ex Ponto de encontro A' />
                         <button>
                             <MaterialIcon icon="add_circle_outline" />
                         </button>
+
+                    </div>
+                </div>
+            )}
+
+            {showPopupChat && (
+                <div className="popup fade-in">
+                    <div className="popup-content">
+                        <button className='closemodalButton' onClick={() => setshowPopupChat(false)}><MaterialIcon icon="close" /></button>
 
                     </div>
                 </div>
